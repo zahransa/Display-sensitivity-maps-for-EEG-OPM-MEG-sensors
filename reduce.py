@@ -7,6 +7,7 @@ from mne.forward import is_fixed_orient, _subject_from_forward
 from mne.io.proj import _has_eeg_average_ref_proj, make_eeg_average_ref_proj, make_projector
 from pandas import np
 from scipy import linalg
+import scipy.io
 
 
 data_path = sample.data_path()
@@ -30,7 +31,11 @@ fwd=pick_channels_forward(fwd, include_ch_names)
 
 convert_forward_solution(fwd, surf_ori=True, force_fixed=False,
                          copy=False, verbose=False)
-gain = fwd['sol']['data']
+#gain = fwd['sol']['data']
+
+mat = scipy.io.loadmat('gain.mat')
+gain=mat["gain"]
+
 n_sensors, n_dipoles = gain.shape
 n_locations = n_dipoles // 3
 sensitivity_map = np.empty(n_locations)
