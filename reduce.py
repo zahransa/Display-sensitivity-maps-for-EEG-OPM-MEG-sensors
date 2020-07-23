@@ -1,12 +1,13 @@
 import mne
-from mne import pick_types_forward, convert_forward_solution, VolSourceEstimate, SourceEstimate
+from mne import pick_types_forward, convert_forward_solution, VolSourceEstimate, SourceEstimate, pick_types, \
+    pick_channels_forward
 from mne.datasets import sample
 import matplotlib.pyplot as plt
 from mne.forward import is_fixed_orient, _subject_from_forward
 from mne.io.proj import _has_eeg_average_ref_proj, make_eeg_average_ref_proj, make_projector
 from pandas import np
 from scipy import linalg
-from plot_forward_sensitivity_maps import mag_map
+
 
 data_path = sample.data_path()
 fwd_fname = data_path + '/MEG/sample/sample_audvis-meg-eeg-oct-6-fwd.fif'
@@ -16,7 +17,17 @@ projs=None
 exclude=[]
 ch_type='mag'
 mode='free'
-fwd = pick_types_forward(fwd, meg=ch_type, eeg=False, exclude=exclude)
+#fwd = pick_types_forward(fwd, meg=ch_type, eeg=False, exclude=exclude)
+
+info = fwd['info']
+meg=ch_type
+eeg=False
+sel = pick_types(info, meg, eeg, exclude=exclude)
+
+include_ch_names = [info['ch_names'][k] for k in sel]
+
+fwd=pick_channels_forward(fwd, include_ch_names)
+
 convert_forward_solution(fwd, surf_ori=True, force_fixed=False,
                          copy=False, verbose=False)
 gain = fwd['sol']['data']
