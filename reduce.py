@@ -45,15 +45,13 @@ for k in range(n_locations):
     sensitivity_map[k] = s[2]
 
 sensitivity_map /= np.max(sensitivity_map)
-subject = _subject_from_forward(fwd)
-vertices = [fwd['src'][0]['vertno'], fwd['src'][1]['vertno']]
-SEClass = SourceEstimate
-mag_map = SEClass(sensitivity_map[:, np.newaxis], vertices=vertices, tmin=0,
-              tstep=1, subject=subject)
-fig_1, ax = plt.subplots()
-ax.hist([mag_map.data.ravel()],bins=20, label=['Magnetometers'],color=['c'])
-fig_1.legend()
-ax.set(title='orientation sensitivity', xlabel='sensitivity', ylabel='count')
-mag_map.plot(time_label='Magnetometers sensitivity', subjects_dir=subjects_dir,clim=dict(lims=[0, 50, 100]))
-plt.ioff()
-plt.show()
+# subject = _subject_from_forward(fwd)
+# vertices = [fwd['src'][0]['vertno'], fwd['src'][1]['vertno']]
+# mag_map = SourceEstimate(sensitivity_map[:, np.newaxis], vertices=vertices, tmin=0, tstep=1, subject=subject)
+# fig_1, ax = plt.subplots()
+# ax.hist([mag_map.data.ravel()],bins=20, label=['Magnetometers'],color=['c'])
+# fig_1.legend()
+# ax.set(title='orientation sensitivity', xlabel='sensitivity', ylabel='count')
+# mag_map.plot(time_label='Magnetometers sensitivity', subjects_dir=subjects_dir,clim=dict(lims=[0, 50, 100]))
+# plt.ioff()
+# plt.show()
