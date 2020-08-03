@@ -16,6 +16,8 @@ Associate the signal with the cortex patch and use this to simulate EEG or MEG r
 - Compute coveriance from recording, compute source, export the source to matlab, replace the GridImageAmp by the sensitivity map resulats (15002 x 1) computed.
 
 - For meg 102 sensors:
+
+
 ![image](https://user-images.githubusercontent.com/29655962/89192575-f893a580-d5a4-11ea-9e82-44d988addd45.png)
 
 
