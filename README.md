@@ -12,3 +12,7 @@ http://neuroimage.usc.edu/brainstorm/Tutorials/TimeFrequency#Simulation
 Create a scout to which you want to set this activity (you can use the menu “Scout > New: Coordinates” to create a new ROI based on MNI coordinates)
 http://neuroimage.usc.edu/brainstorm/Tutorials/Scouts#Scout_toolbar_and_menus
 Associate the signal with the cortex patch and use this to simulate EEG or MEG recordings, with process “Simulate > Simulate recordings from scouts” (select the simulated signal in Process1, and select the scout in the process options)
+
+- Compute coveriance from recording, compute source, export the source to matlab, replace the GridImageAmp by the sensitivity map resulats (15002 x 1) computed.
+
+- For meg 102 sensors
