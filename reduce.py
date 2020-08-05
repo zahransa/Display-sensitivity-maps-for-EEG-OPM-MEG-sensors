@@ -55,3 +55,13 @@ sensitivity_map /= np.max(sensitivity_map)
 # mag_map.plot(time_label='Magnetometers sensitivity', subjects_dir=subjects_dir,clim=dict(lims=[0, 50, 100]))
 # plt.ioff()
 # plt.show()
+
+
+plt.hist([sensitivity_map.ravel()],
+         bins=20, label=['Gradiometers'],
+         color=['c'])
+plt.legend()
+plt.title('Normal orientation sensitivity')
+plt.xlabel('sensitivity')
+plt.ylabel('count')
+plt.show()
